@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="paper" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f7efe1"/><stop offset="1" stop-color="#eadcc5"/></linearGradient>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#b9d9d2"/><stop offset="1" stop-color="#e7eee5"/></linearGradient>
+    <linearGradient id="sunset" x1="0" x2="1"><stop stop-color="#e8bd83"/><stop offset="1" stop-color="#c87558"/></linearGradient>
+    <filter id="soft"><feTurbulence baseFrequency=".018" numOctaves="3" seed="7" type="fractalNoise" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="7"/></filter>
+    <style>.ink{stroke:#6d5a47;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.thin{stroke:#8b765f;stroke-width:3}.wash{opacity:.84}.label{font:700 28px Georgia,serif;fill:#5f4b39}.small{font:18px Arial,sans-serif;fill:#786653}</style>
+  </defs>
+
+  <symbol id="italy-map" viewBox="0 0 800 500">
+    <rect width="800" height="500" fill="url(#sky)"/>
+    <path d="M0 80 Q170 30 330 60 T800 45 V0 H0Z" fill="#d9e8dc" opacity=".6"/>
+    <g filter="url(#soft)">
+      <path d="M290 46c31 12 45 35 58 61 10 20 33 18 51 31 24 17 18 39 32 59 13 18 43 19 50 43 7 25-19 45-14 67 5 25 42 39 48 69 7 37-24 66-55 53-25-10-20-39-42-52-25-15-55-15-71-41-17-29 2-55-4-82-6-31-38-48-43-80-5-33 23-58 19-89-3-23-25-45-13-67 10-18 35-22 58-13z" fill="#d6c49f" stroke="#806f5d" stroke-width="4"/>
+      <path d="M430 390c35 13 82 18 105 48-33 9-79 5-108-13z" fill="#d6c49f" stroke="#806f5d" stroke-width="4"/>
+      <path d="M510 415c31 1 62 9 82 24-31 12-62 11-84 3z" fill="#d6c49f" stroke="#806f5d" stroke-width="4"/>
+      <path d="M155 305c45-30 100-34 142-4-27 44-84 64-130 36z" fill="#c8b98d" stroke="#806f5d" stroke-width="4"/>
+    </g>
+    <path d="M302 92c38 72 57 120 72 193 13 61 42 101 86 139" fill="none" stroke="#b95f43" stroke-width="4" stroke-dasharray="9 10" opacity=".65"/>
+    <g opacity=".34" fill="none" stroke="#fff" stroke-width="3"><path d="M50 120q120 50 220-7"/><path d="M540 110q100 55 210 0"/><path d="M70 430q130-60 250-9"/></g>
+    <text x="55" y="55" class="label">ITALIA · MAPPA</text><text x="55" y="82" class="small">V0.1 手绘占位地图 · 后续继续细化</text>
+  </symbol>
+
+  <symbol id="area-rome" viewBox="0 0 800 500"><rect width="800" height="500" fill="url(#sunset)"/><circle cx="630" cy="88" r="56" fill="#f3d59a" opacity=".7"/><path d="M0 385q170-70 340-20t460-15v150H0z" fill="#c48c62"/><path d="M250 335h310v32H250zM300 195h210l50 140H250z" fill="#d7c1a4" class="ink"/><path d="M327 250h155M350 205v130M455 205v130" fill="none" class="thin"/><text x="45" y="66" class="label">ROMA</text></symbol>
+  <symbol id="area-milan" viewBox="0 0 800 500"><rect width="800" height="500" fill="#dbe5d5"/><path d="M0 340q190-90 360 0t440-20v180H0z" fill="#8aa190"/><path d="M235 355h335l-20-145-46-45-28 62-56-122-57 122-34-70-54 52z" fill="#e6ddd0" class="ink"/><path d="M420 105v250M330 158l45 197M505 164l-38 191" fill="none" class="thin"/><text x="45" y="66" class="label">MILANO</text></symbol>
+  <symbol id="area-venice" viewBox="0 0 800 500"><rect width="800" height="500" fill="#bcd8d8"/><path d="M0 315q160-50 320 0t480-5v190H0z" fill="#6f9fa1"/><path d="M105 315h590" class="thin"/><g fill="#e6d8c6" class="ink"><path d="M155 310h130v-130H155z"/><path d="M325 310h160V145H325z"/><path d="M520 310h130V195H520z"/></g><path d="M385 145l20-75 22 75" fill="#c86b50" class="ink"/><text x="45" y="66" class="label">VENEZIA</text></symbol>
+  <symbol id="area-florence" viewBox="0 0 800 500"><rect width="800" height="500" fill="#eadcc7"/><path d="M0 350q130-85 260-20t270-10 270 20v160H0z" fill="#b49372"/><path d="M245 350h335V218H245z" fill="#d7a67e" class="ink"/><path d="M335 218q70-145 140 0z" fill="#b95d46" class="ink"/><path d="M395 70v280M525 155v195" fill="none" class="thin"/><text x="45" y="66" class="label">FIRENZE</text></symbol>
+  <symbol id="area-naples" viewBox="0 0 800 500"><rect width="800" height="500" fill="#cfe1d8"/><path d="M0 328q150-55 290-5t510-10v187H0z" fill="#6eaaa8"/><path d="M150 323l135-145 135 145z" fill="#9aa18d" class="ink"/><path d="M285 178l32-58 20 58" fill="#c37a55"/><g fill="#e2c38e" class="ink"><path d="M470 323h70v-100h-70z"/><path d="M545 323h65V250h-65z"/><path d="M615 323h70V205h-70z"/></g><text x="45" y="66" class="label">NAPOLI</text></symbol>
+  <symbol id="area-sicily" viewBox="0 0 800 500"><rect width="800" height="500" fill="#d9e6d8"/><path d="M0 300q170-55 320 0t480-5v205H0z" fill="#78a9a6"/><path d="M185 315c95-78 250-92 390-10-88 92-260 115-390 10z" fill="#d8ba82" class="ink"/><path d="M475 220l78-128 83 205" fill="#9b8e7f" class="ink"/><path d="M551 92l20-42 22 42" fill="#c66849"/><text x="45" y="66" class="label">SICILIA</text></symbol>
+
+  <symbol id="reco-rome" viewBox="0 0 800 500"><use href="#area-rome"/><path d="M62 420h210" stroke="#fff3e3" stroke-width="20" opacity=".7"/><text x="65" y="428" class="small">Colosseo · Trastevere</text></symbol>
+  <symbol id="reco-florence" viewBox="0 0 800 500"><use href="#area-florence"/><path d="M62 420h235" stroke="#fff3e3" stroke-width="20" opacity=".7"/><text x="65" y="428" class="small">Duomo · Arno</text></symbol>
+  <symbol id="reco-cinque-terre" viewBox="0 0 800 500"><rect width="800" height="500" fill="#b9d9d2"/><path d="M0 300q160-75 280-30t520-15v245H0z" fill="#5f9d9d"/><path d="M50 385l240-220 150 140 120-90 190 170z" fill="#9c9576"/><g class="ink"><path d="M330 325h68v85h-68z" fill="#d77d5c"/><path d="M405 305h70v105h-70z" fill="#e1b05f"/><path d="M482 340h62v70h-62z" fill="#c97167"/><path d="M550 315h72v95h-72z" fill="#e4ca8d"/></g><text x="45" y="66" class="label">CINQUE TERRE</text></symbol>
+  <symbol id="reco-milan" viewBox="0 0 800 500"><use href="#area-milan"/><path d="M62 420h220" stroke="#fff3e3" stroke-width="20" opacity=".7"/><text x="65" y="428" class="small">Duomo · Brera</text></symbol>
+</svg>
