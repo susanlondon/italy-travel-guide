@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="意游记：以攻略为核心的意大利旅行指南原型。" />
+  <title>意游记｜意大利旅行攻略</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="回到首页">
+        <span class="brand-mark" aria-hidden="true">▥</span>
+        <span><strong>意游记</strong><small>你的意大利旅行指南</small></span>
+      </a>
+      <nav class="main-nav" aria-label="主导航">
+        <a class="active" href="#top">首页</a>
+        <a href="#areas">按大区域浏览</a>
+        <a href="#recommendations">目的地</a>
+        <a href="#practical">实用攻略</a>
+        <a href="#guidebook">我的攻略本</a>
+        <a href="#about">关于</a>
+      </nav>
+      <div class="top-actions">
+        <button class="icon-button" type="button" data-toast="收藏夹将在下一阶段接入">♡ <span>收藏</span></button>
+        <button class="icon-button" type="button" data-toast="我的攻略本将在后续接入个人账号">▣ <span>我的攻略本</span></button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero scrapbook-sheet">
+        <div class="hero-copy">
+          <div class="paper-note intro-note">
+            <p class="eyebrow">你好，欢迎来到</p>
+            <h1>意游记<span>♥</span></h1>
+            <p>以攻略为核心，把目的地、注意事项、收藏与旅行准备放在同一本“数字旅行手账”里。</p>
+          </div>
+          <div class="search-card">
+            <label class="search-box">
+              <span aria-hidden="true">⌕</span>
+              <input id="site-search" type="search" placeholder="搜索目的地 / 景点 / 关键词" autocomplete="off" />
+              <button id="search-button" type="button">搜索</button>
+            </label>
+            <div class="hot-search" aria-label="热门搜索">
+              <span>热门搜索：</span>
+              <button type="button">罗马</button><button type="button">威尼斯</button><button type="button">五渔村</button>
+              <button type="button">阿马尔菲海岸</button><button type="button">托斯卡纳</button><button type="button">西西里</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-stage" aria-label="意大利六大区域插画地图">
+          <svg class="hero-map" role="img" aria-label="手绘风格的意大利区域地图"><use href="assets/illustrations.svg#italy-map"></use></svg>
+          <button class="map-hotspot hotspot-1" data-area="A01">1</button>
+          <button class="map-hotspot hotspot-2" data-area="A02">2</button>
+          <button class="map-hotspot hotspot-3" data-area="A03">3</button>
+          <button class="map-hotspot hotspot-4" data-area="A04">4</button>
+          <button class="map-hotspot hotspot-5" data-area="A05">5</button>
+          <button class="map-hotspot hotspot-6" data-area="A06">6</button>
+        </div>
+      </section>
+
+      <section class="calendar-strip scrapbook-sheet" aria-labelledby="calendar-title">
+        <div class="section-kicker">
+          <div>
+            <h2 id="calendar-title">我的 14 天行程预览</h2>
+            <p>首页只做概览；点击日期后，后续进入可编辑的行程规划子页面。</p>
+          </div>
+          <button type="button" id="open-planner">打开行程规划 →</button>
+        </div>
+        <div id="calendar-days" class="calendar-days" aria-label="14天行程"></div>
+      </section>
+
+      <section id="areas" class="section-block">
+        <div class="section-heading">
+          <div><span class="section-icon">⌖</span><h2>按大区域浏览</h2></div>
+          <p>从六大区域开始，再进入对应的 Destination 与景点攻略。</p>
+        </div>
+        <div id="area-grid" class="area-grid"></div>
+      </section>
+
+      <section class="lower-grid">
+        <div id="recommendations" class="recommend-panel scrapbook-sheet">
+          <div class="panel-heading">
+            <div><h2>可能适合你的地点</h2><p>未来可综合天气、当前位置、收藏与人气动态推荐。</p></div>
+            <button id="shuffle-reco" type="button">换一批 ↻</button>
+          </div>
+          <div id="recommend-grid" class="recommend-grid"></div>
+        </div>
+
+        <div id="guidebook" class="guidebook-panel scrapbook-sheet">
+          <div class="panel-heading">
+            <div><h2>我的攻略本</h2><p>把出发前和旅途中真正需要的东西留在这里。</p></div>
+          </div>
+          <div class="guidebook-grid">
+            <button type="button" class="notebook-card" data-toast="想去的地方：后续支持一键收藏景点与目的地"><span>♥</span><strong>想去的地方</strong><small>收藏想去的地点</small></button>
+            <button type="button" class="notebook-card" data-toast="携带清单：后续可勾选与自定义"><span>▤</span><strong>携带清单</strong><small>行前准备不遗漏</small></button>
+            <button type="button" class="notebook-card emergency" id="emergency-card"><span>☎</span><strong>紧急联系电话</strong><small>旅行时快速查看</small></button>
+            <button type="button" class="notebook-card" data-toast="我已经去过：后续可标记与留下旅行记录"><span>✓</span><strong>我已经去过</strong><small>记录你的足迹</small></button>
+          </div>
+          <aside class="encouragement" aria-label="今日旅行鼓励">
+            <span>给今天的自己一句旅行鼓励</span>
+            <blockquote id="encouragement-text">慢慢走，世界会温柔以待。</blockquote>
+            <button id="new-encouragement" type="button">换一句</button>
+          </aside>
+        </div>
+      </section>
+
+      <section id="practical" class="practical scrapbook-sheet">
+        <div class="panel-heading compact"><div><h2>实用攻略速览</h2><p>所有功能仍然围绕“攻略”本身展开。</p></div></div>
+        <div class="practical-grid">
+          <button type="button" data-toast="门票与预约攻略将在内容页展开"><span>🎟</span><strong>门票 & 预约</strong><small>热门景点是否需要预约</small></button>
+          <button type="button" data-toast="交通攻略将在内容页展开"><span>🚆</span><strong>交通换乘</strong><small>火车、公交与轮渡</small></button>
+          <button type="button" data-toast="自驾与停车攻略将在内容页展开"><span>🚗</span><strong>停车与自驾</strong><small>ZTL、停车与驾驶提醒</small></button>
+          <button type="button" data-toast="行李与出行注意事项将在内容页展开"><span>🧳</span><strong>行李与注意事项</strong><small>旅行前后的实用提醒</small></button>
+          <button type="button" id="emergency-shortcut"><span>☎</span><strong>紧急信息</strong><small>报警、医疗与领事协助</small></button>
+        </div>
+      </section>
+    </main>
+
+    <footer id="about" class="footer">
+      <span>La Dolce Vita ♡</span>
+      <p>V0 首页原型 · 数据来自你的意大利攻略数据库 · 图片目前为插画/占位素材</p>
+    </footer>
+  </div>
+
+  <div class="modal-backdrop" id="modal-backdrop" hidden></div>
+  <dialog id="planner-dialog" class="paper-dialog">
+    <button class="dialog-close" type="button" data-close-dialog="planner-dialog" aria-label="关闭">×</button>
+    <h2>行程规划子页面</h2>
+    <p>这里后续会做成你说的“轻量甘特图”：每一天可以指定所在城市/区域，拖动或编辑日期，并与天气、收藏地点联动。</p>
+    <div class="mini-gantt" aria-hidden="true">
+      <span>罗马</span><i style="--start:1;--span:4"></i>
+      <span>佛罗伦萨</span><i style="--start:5;--span:3"></i>
+      <span>威尼斯</span><i style="--start:8;--span:2"></i>
+      <span>西西里</span><i style="--start:10;--span:5"></i>
+    </div>
+    <p class="muted">当前首页只保留入口与预览，正式交互放到子页面阶段。</p>
+  </dialog>
+
+  <dialog id="emergency-dialog" class="paper-dialog">
+    <button class="dialog-close" type="button" data-close-dialog="emergency-dialog" aria-label="关闭">×</button>
+    <h2>紧急联系电话</h2>
+    <p class="muted">这里先建立功能入口；具体号码会从你的攻略数据中整理后再接入。</p>
+    <div class="emergency-list">
+      <div><strong>欧洲统一紧急电话</strong><span>112</span></div>
+      <div><strong>医疗 / 警务 / 领事协助</strong><span>待从攻略数据接入</span></div>
+    </div>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
