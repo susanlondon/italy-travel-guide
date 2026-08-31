@@ -73,10 +73,11 @@
   }
 
   function addPrototypeStyles() {
-    if (document.querySelector('#prototype-v04-style')) return;
+    if (document.querySelector('#prototype-v05-style')) return;
     const style = document.createElement('style');
-    style.id = 'prototype-v04-style';
+    style.id = 'prototype-v05-style';
     style.textContent = `
+      /* 实用攻略入口：保持左下角小模块，不铺满页面 */
       #practical.compact-practical{
         width:min(820px,64%);
         margin:16px auto 0 0;
@@ -97,15 +98,83 @@
       #practical .practical-grid-four span{font-size:22px}
       #practical .practical-grid-four strong{font-size:14px;margin-top:2px}
       #practical .practical-grid-four small{line-height:1.45}
+
+      /* 推荐 + 我的攻略本：桌面端保持左右并排、同一基线 */
+      .lower-grid{
+        grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+        align-items:stretch;
+        gap:16px;
+      }
+      .lower-grid > .recommend-panel,
+      .lower-grid > .guidebook-panel{
+        min-width:0;
+        height:100%;
+      }
+      #recommendations,
+      #guidebook{
+        display:flex;
+        flex-direction:column;
+      }
+      #recommendations .panel-heading,
+      #guidebook .panel-heading{
+        min-height:45px;
+        align-items:flex-start;
+      }
+      #recommendations .recommend-grid{
+        flex:1;
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        grid-auto-rows:1fr;
+      }
+      #recommendations .recommend-card{
+        min-width:0;
+        min-height:98px;
+      }
+
+      /* 攻略本：四张卡片一字排开，鼓励语整块放在下面 */
+      #guidebook .guidebook-grid{
+        display:grid;
+        grid-template-columns:repeat(4,minmax(0,1fr));
+        gap:9px;
+        margin-top:14px;
+      }
+      #guidebook .notebook-card{
+        min-width:0;
+        min-height:118px;
+        padding:12px 6px;
+      }
+      #guidebook .notebook-card strong{
+        font-size:14px;
+        white-space:nowrap;
+      }
+      #guidebook .notebook-card small{
+        line-height:1.4;
+      }
       #guidebook .notebook-card.next-stop span{color:#c48135}
-      @media(max-width:1080px){
+      #guidebook .encouragement{
+        width:100%;
+        margin-top:12px;
+        min-height:92px;
+        padding:11px 14px 10px;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+      }
+      #guidebook .encouragement blockquote{
+        margin:5px 0 3px;
+      }
+
+      @media(max-width:1180px){
+        .lower-grid{grid-template-columns:1fr}
         #practical.compact-practical{width:100%}
+        #guidebook .guidebook-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
       }
       @media(max-width:720px){
         #practical .practical-grid-four{grid-template-columns:repeat(2,minmax(0,1fr))}
+        #guidebook .guidebook-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
       }
       @media(max-width:420px){
         #practical .practical-grid-four{grid-template-columns:1fr}
+        #guidebook .guidebook-grid{grid-template-columns:1fr}
       }
     `;
     document.head.appendChild(style);
