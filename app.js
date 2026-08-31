@@ -29,6 +29,84 @@
       </article>`).join('');
   }
 
+  function renderPracticalModule() {
+    const practical = document.querySelector('#practical');
+    if (!practical) return;
+
+    practical.classList.add('compact-practical');
+    practical.innerHTML = `
+      <div class="panel-heading compact">
+        <div>
+          <h2>实用攻略入口</h2>
+          <p>出发前、转场时、需要帮助时，都能从这里快速找到对应攻略。</p>
+        </div>
+      </div>
+      <div class="practical-grid practical-grid-four">
+        <button type="button" data-toast="后续子页面会整理意大利开车、停车、ZTL、自驾与无人机等通用旅行须知">
+          <span>🧭</span><strong>出发前看看</strong><small>开车、停车、ZTL、无人机等</small>
+        </button>
+        <button type="button" data-toast="后续会做一张意大利交通图，展示大区与城市之间怎么走、使用什么交通以及大致时间">
+          <span>🚆</span><strong>下一站怎么走</strong><small>城市之间的交通与时间</small>
+        </button>
+        <button type="button" id="emergency-shortcut">
+          <span>☎</span><strong>旅途求助</strong><small>报警、急救与使领馆信息</small>
+        </button>
+        <button type="button" data-toast="我的行程本后续支持自己添加航班、车票、船票以及个人行程信息">
+          <span>📔</span><strong>我的行程本</strong><small>记录航班、车票与个人行程</small>
+        </button>
+      </div>`;
+
+    const style = document.createElement('style');
+    style.id = 'practical-v02-style';
+    style.textContent = `
+      #practical.compact-practical{
+        width:min(820px,64%);
+        margin:16px auto 0 0;
+        padding:14px 16px 15px;
+      }
+      #practical.compact-practical .panel-heading h2{font-size:20px}
+      #practical.compact-practical .panel-heading p{max-width:620px}
+      #practical .practical-grid-four{
+        grid-template-columns:repeat(4,minmax(0,1fr));
+        gap:8px;
+        margin-top:11px;
+      }
+      #practical .practical-grid-four button{
+        min-height:102px;
+        padding:11px 10px;
+        background:rgba(255,250,243,.86);
+      }
+      #practical .practical-grid-four span{font-size:22px}
+      #practical .practical-grid-four strong{font-size:14px;margin-top:2px}
+      #practical .practical-grid-four small{line-height:1.45}
+      @media(max-width:1080px){
+        #practical.compact-practical{width:100%}
+      }
+      @media(max-width:720px){
+        #practical .practical-grid-four{grid-template-columns:repeat(2,minmax(0,1fr))}
+      }
+      @media(max-width:420px){
+        #practical .practical-grid-four{grid-template-columns:1fr}
+      }
+    `;
+    document.head.appendChild(style);
+
+    const emergencyDialog = document.querySelector('#emergency-dialog');
+    if (emergencyDialog) {
+      const title = emergencyDialog.querySelector('h2');
+      const intro = emergencyDialog.querySelector('p.muted');
+      const rows = emergencyDialog.querySelectorAll('.emergency-list div');
+      if (title) title.textContent = '旅途求助';
+      if (intro) intro.textContent = '这里会集中放旅行中真正需要快速找到的应急信息，包括报警、急救、中国驻意大利使领馆及其他求助方式。';
+      if (rows[1]) {
+        const strong = rows[1].querySelector('strong');
+        const span = rows[1].querySelector('span');
+        if (strong) strong.textContent = '中国驻意大利使领馆 / 其他应急联系方式';
+        if (span) span.textContent = '后续从攻略数据接入';
+      }
+    }
+  }
+
   const calendar = document.querySelector('#calendar-days');
   const start = new Date(Date.UTC(2026, 8, 18));
   const labels = ['罗马','罗马','罗马','佛罗伦萨','','','','','','','','','',''];
@@ -40,7 +118,9 @@
   }).join('');
 
   let recoOffset = 0;
-  renderAreas(); renderRecommendations();
+  renderAreas();
+  renderRecommendations();
+  renderPracticalModule();
 
   function showToast(message) {
     toast.textContent = message; toast.classList.add('show');
