@@ -93,25 +93,17 @@
           <div class="panel-heading">
             <div><h2>我的攻略本</h2><p>把想去的、要带的、下一站提醒和走过的地方留在这里。</p></div>
           </div>
-          <div class="guidebook-body">
-            <div class="guidebook-grid">
-              <button type="button" class="notebook-card" data-toast="想去看看：后续支持一键收藏景点与目的地，并按城市整理"><span>♥</span><strong>想去看看</strong><small>收藏以后想去的地点</small></button>
-              <button type="button" class="notebook-card" data-toast="我的行李箱：后续可自己添加、勾选和复用旅行携带清单"><span>▤</span><strong>我的行李箱</strong><small>出发前一件一件打勾</small></button>
-              <button type="button" class="notebook-card next-stop" data-toast="下一站别忘了：未来会结合你的行程，提醒预约、交通、停车、天气与收藏景点"><span>◉</span><strong>下一站别忘了</strong><small>根据下一站给你实用提醒</small></button>
-              <button type="button" class="notebook-card" data-toast="我来过这里：后续可以标记已经去过的 Destination，并留下简单旅行记录"><span>✓</span><strong>我来过这里</strong><small>记录真正走过的地方</small></button>
-            </div>
-
-            <aside class="wish-note" aria-label="意大利小愿望">
-              <span class="wish-tape" aria-hidden="true"></span>
-              <p class="wish-eyebrow">♡ 意大利小愿望</p>
-              <ul>
-                <li>在西西里看一次海边日落</li>
-                <li>找一家没有游客的小餐馆</li>
-                <li>坐一次贡多拉</li>
-              </ul>
-              <button id="add-wish" type="button">＋ 写下一个小愿望</button>
-            </aside>
+          <div class="guidebook-grid">
+            <button type="button" class="notebook-card" data-toast="想去看看：后续支持一键收藏景点与目的地，并按城市整理"><span>♥</span><strong>想去看看</strong><small>收藏以后想去的地点</small></button>
+            <button type="button" class="notebook-card" data-toast="我的行李箱：后续可自己添加、勾选和复用旅行携带清单"><span>▤</span><strong>我的行李箱</strong><small>出发前一件一件打勾</small></button>
+            <button type="button" class="notebook-card next-stop" data-toast="下一站别忘了：未来会结合你的行程，提醒预约、交通、停车、天气与收藏景点"><span>◉</span><strong>下一站别忘了</strong><small>根据下一站给你实用提醒</small></button>
+            <button type="button" class="notebook-card" data-toast="我来过这里：后续可以标记已经去过的 Destination，并留下简单旅行记录"><span>✓</span><strong>我来过这里</strong><small>记录真正走过的地方</small></button>
           </div>
+          <aside class="encouragement" aria-label="给自己的话">
+            <span>给今天的自己一句旅行鼓励</span>
+            <blockquote id="encouragement-text">慢慢走，世界会温柔以待。</blockquote>
+            <button id="new-encouragement" type="button">换一句</button>
+          </aside>
         </div>
       </section>
 
@@ -128,7 +120,7 @@
     </main>
 
     <footer id="about" class="footer">
-      <span id="footer-encouragement">慢慢走，世界会温柔以待。 ♡</span>
+      <span>La Dolce Vita ♡</span>
       <p>V0 首页原型 · 数据来自你的意大利攻略数据库 · 图片目前为插画/占位素材</p>
     </footer>
   </div>
