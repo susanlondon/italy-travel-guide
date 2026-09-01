@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="意游记区域攻略：罗马及意大利中部" />
+  <meta name="app-version" content="Web V0.10" />
+  <title>罗马及意大利中部｜意游记</title>
+  <link rel="stylesheet" href="styles.css?v=0.10" />
+  <link rel="stylesheet" href="subpages.css?v=0.10" />
+</head>
+<body>
+  <div class="site-shell subpage-shell">
+    <header class="topbar subpage-topbar">
+      <a class="brand" href="index.html" aria-label="返回首页">
+        <span class="brand-mark" aria-hidden="true">▥</span>
+        <span><strong>意游记</strong><small>你的意大利旅行指南</small></span>
+      </a>
+      <nav class="main-nav subpage-nav" aria-label="子页面导航">
+        <a href="index.html">首页</a>
+        <a class="active" href="area.html?id=A01">罗马及意大利中部</a>
+        <a href="#destinations">目的地</a>
+      </nav>
+      <div class="top-actions">
+        <span class="version-badge">Web V0.10</span>
+        <a class="soft-link" href="index.html#areas">← 返回六大区域</a>
+      </div>
+    </header>
+
+    <main class="subpage-main">
+      <div class="breadcrumb" aria-label="面包屑">
+        <a href="index.html">首页</a><span>›</span><strong id="breadcrumb-area">罗马及意大利中部</strong>
+      </div>
+
+      <section class="area-hero paper-surface">
+        <div class="area-hero-copy">
+          <p class="subpage-eyebrow">AREA · 01</p>
+          <h1 id="area-title">罗马及意大利中部</h1>
+          <p id="area-title-it" class="original-name">Roma e Italia centrale</p>
+          <p id="area-description" class="lead-copy">以罗马为主要旅行枢纽，并连接白露里治奥与奥尔维耶托。</p>
+          <div class="area-stats" id="area-stats"></div>
+        </div>
+        <div class="area-sketch" aria-label="罗马及意大利中部区域示意">
+          <div class="sketch-paper">
+            <span class="sketch-label">区域导航示意</span>
+            <div class="sketch-route"></div>
+            <a class="sketch-pin pin-rome" href="destination.html?id=D001"><b>Roma</b><small>罗马</small></a>
+            <a class="sketch-pin pin-civita" href="destination.html?id=D003"><b>Civita</b><small>白露里治奥</small></a>
+            <a class="sketch-pin pin-orvieto" href="destination.html?id=D004"><b>Orvieto</b><small>奥尔维耶托</small></a>
+            <span class="sketch-note">当前为层级导航示意；真实地图位置将在地图模块接入后替换。</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="area-note-row">
+        <div class="mini-note rust-note">
+          <span>这一区怎么读？</span>
+          <strong>罗马是主枢纽</strong>
+          <p>梵蒂冈作为罗马内部子区域；白露里治奥与奥尔维耶托作为关联目的地。</p>
+        </div>
+        <div class="mini-note cream-note">
+          <span>数据来源</span>
+          <strong>你的 V1.1 攻略数据库</strong>
+          <p>这里直接使用表格中的 Destination 层级、推荐天数、人气与景点数据。</p>
+        </div>
+      </section>
+
+      <section id="destinations" class="destination-section">
+        <div class="subpage-section-heading">
+          <div>
+            <p class="subpage-eyebrow">DESTINATIONS</p>
+            <h2>从这里选择下一站</h2>
+            <p>点击目的地后进入对应页面，查看这座城市 / 小镇下面的景点与攻略条目。</p>
+          </div>
+        </div>
+        <div id="destination-grid" class="destination-grid"></div>
+      </section>
+
+      <section class="area-next paper-surface">
+        <div>
+          <p class="subpage-eyebrow">NEXT</p>
+          <h2>先把一条完整路径跑通</h2>
+          <p>V0.10 先验证 <strong>Area → Destination → Place</strong>。等罗马这一组顺了，再把同一套模板扩展到米兰、威尼斯、佛罗伦萨、那不勒斯和西西里。</p>
+        </div>
+        <a class="primary-link" href="destination.html?id=D001">先进入罗马 →</a>
+      </section>
+    </main>
+
+    <footer class="footer subpage-footer">
+      <span>Roma · Civita · Orvieto</span>
+      <p>Web V0.10 · Area Page Prototype</p>
+    </footer>
+  </div>
+
+  <script src="v010-data.js?v=0.10"></script>
+  <script src="area.js?v=0.10"></script>
+</body>
+</html>
