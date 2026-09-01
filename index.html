@@ -4,9 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="意游记：以攻略为核心的意大利旅行指南原型。" />
-  <meta name="app-version" content="Web V0.6" />
+  <meta name="app-version" content="Web V0.7" />
   <title>意游记｜意大利旅行攻略</title>
-  <link rel="stylesheet" href="styles.css?v=0.6" />
+  <link rel="stylesheet" href="styles.css?v=0.7" />
+  <link rel="stylesheet" href="wishlist.css?v=0.7" />
 </head>
 <body>
   <div class="site-shell">
@@ -24,7 +25,7 @@
         <a href="#about">关于</a>
       </nav>
       <div class="top-actions">
-        <span class="version-badge" title="当前原型版本">Web V0.6</span>
+        <span class="version-badge" title="当前原型版本">Web V0.7</span>
         <button class="icon-button" type="button" data-toast="收藏夹将在下一阶段接入">♡ <span>收藏</span></button>
         <button class="icon-button" type="button" data-toast="我的攻略本将在后续接入个人账号">▣ <span>我的攻略本</span></button>
       </div>
@@ -122,25 +123,24 @@
           </div>
         </section>
 
-        <aside id="wishlist" class="wish-board" aria-labelledby="wish-title">
-          <span class="wish-magnet magnet-left" aria-hidden="true"></span>
-          <span class="wish-magnet magnet-right" aria-hidden="true"></span>
-          <span class="wish-stamp" aria-hidden="true">ITALIA<br>AMORE</span>
-          <p class="wish-kicker">给这趟旅程留一点期待</p>
-          <h2 id="wish-title">♡ 意大利小愿望</h2>
-          <ul class="wish-list">
-            <li><span>○</span>在西西里看一次海边日落</li>
-            <li><span>○</span>找一家没有游客的小餐馆</li>
-            <li><span>○</span>坐一次贡多拉</li>
-          </ul>
-          <button id="add-wish" type="button">＋ 写下一个小愿望</button>
+        <aside id="wishlist" class="wish-stack" aria-labelledby="wish-title">
+          <div class="wish-sheet">
+            <span class="wish-tape" aria-hidden="true"></span>
+            <p class="wish-kicker">这趟旅行最想完成的一件事</p>
+            <h2 id="wish-title">♡ 意大利小愿望</h2>
+            <button id="open-wishlist" class="featured-wish" type="button" aria-haspopup="dialog" aria-controls="wishlist-dialog">
+              <span class="featured-wish-label">主页心愿</span>
+              <strong id="featured-wish-text">在西西里看一次海边日落</strong>
+              <small id="wish-count">3 个心愿 · 3 个待完成 · 打开心愿本 →</small>
+            </button>
+          </div>
         </aside>
       </section>
     </main>
 
     <footer id="about" class="footer">
       <span>La Dolce Vita ♡</span>
-      <p>Web V0.6 · 首页原型 · 数据来自你的意大利攻略数据库 · 图片目前为插画/占位素材</p>
+      <p>Web V0.7 · 首页原型 · 数据来自你的意大利攻略数据库 · 图片目前为插画/占位素材</p>
     </footer>
   </div>
 
@@ -167,8 +167,23 @@
     </div>
   </dialog>
 
+  <dialog id="wishlist-dialog" class="paper-dialog wish-dialog">
+    <button class="dialog-close" type="button" data-close-dialog="wishlist-dialog" aria-label="关闭">×</button>
+    <div class="wish-dialog-header">
+      <h2>♡ 意大利小愿望</h2>
+      <p class="muted">可以直接编辑、完成或删除心愿。点 ☆ / ★ 选择一条“这次最想完成的”，它会显示在主页便签上。</p>
+    </div>
+    <form id="wish-form" class="wish-add-form">
+      <input id="wish-input" type="text" maxlength="80" autocomplete="off" placeholder="比如：在陶尔米纳看一次日落" aria-label="写下一个新的意大利小愿望" />
+      <button type="submit">＋ 添加心愿</button>
+    </form>
+    <div id="wish-items" class="wish-items" aria-live="polite"></div>
+    <p class="muted wish-dialog-help">V0.7 先用弹窗模拟“心愿本”子页面；等主页稳定后，可以再把这里做成完整独立页面。</p>
+  </dialog>
+
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="data.js?v=0.6"></script>
-  <script src="app.js?v=0.6"></script>
+  <script src="data.js?v=0.7"></script>
+  <script src="app.js?v=0.7"></script>
+  <script src="wishlist.js?v=0.7"></script>
 </body>
 </html>
