@@ -1,0 +1,289 @@
+/* Web V0.9 — 首页 UI 收口：一行浏览、圆润卡片、轻复古小愿望 */
+
+:root{
+  --soft-radius-lg:22px;
+  --soft-radius-md:18px;
+  --soft-border:rgba(151,118,84,.22);
+  --soft-shadow:0 10px 28px rgba(91,66,43,.075);
+}
+
+/* 整体卡片语言更柔和，减少“后台组件感” */
+.scrapbook-sheet{
+  border-radius:var(--soft-radius-lg);
+  border-color:rgba(157,126,94,.20);
+  box-shadow:var(--soft-shadow);
+}
+
+.calendar-strip,
+.recommend-panel,
+.guidebook-panel,
+.practical{
+  border-radius:var(--soft-radius-lg);
+}
+
+/* 1. 六大区域：桌面端固定一行，卡片改为上图下文 */
+.area-grid{
+  display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:clamp(10px,1vw,16px);
+  align-items:stretch;
+}
+
+.area-card{
+  grid-template-columns:1fr;
+  grid-template-rows:minmax(118px,138px) minmax(118px,1fr);
+  min-height:270px;
+  border:1px solid var(--soft-border);
+  border-radius:20px;
+  background:rgba(255,250,242,.92);
+  box-shadow:0 7px 20px rgba(94,69,46,.055);
+  overflow:hidden;
+}
+
+.area-card:hover{
+  transform:translateY(-3px) rotate(-.15deg);
+  box-shadow:0 13px 28px rgba(94,69,46,.10);
+}
+
+.area-image-wrap{
+  min-height:0;
+  height:100%;
+  margin:8px 8px 0;
+  border-radius:15px;
+  overflow:hidden;
+}
+
+.area-card-body{
+  padding:12px 13px 13px;
+  text-align:left;
+}
+
+.area-card h3{
+  font-size:15px;
+  line-height:1.35;
+  margin-bottom:4px;
+}
+
+.area-card p{
+  font-size:10px;
+  line-height:1.5;
+}
+
+.area-card button{
+  font-size:11px;
+  padding-top:7px;
+}
+
+.area-number{
+  top:10px;
+  left:10px;
+  width:27px;
+  height:27px;
+  box-shadow:0 3px 9px rgba(62,48,36,.13);
+}
+
+/* 2. 可能适合你的地点：四张卡固定一行，视觉更圆润 */
+.recommend-grid{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  grid-auto-rows:1fr;
+  gap:10px;
+}
+
+.recommend-card{
+  grid-template-columns:1fr;
+  grid-template-rows:98px auto;
+  gap:8px;
+  min-height:176px;
+  padding:8px;
+  border:1px solid var(--soft-border);
+  border-radius:18px;
+  background:rgba(255,250,242,.94);
+  box-shadow:0 6px 16px rgba(91,66,43,.045);
+  overflow:hidden;
+}
+
+.recommend-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 22px rgba(91,66,43,.085);
+}
+
+.recommend-card .reco-art{
+  width:100%;
+  height:98px;
+  border-radius:13px;
+}
+
+.recommend-card h3{
+  font-size:13px;
+  line-height:1.35;
+  margin:0 0 3px;
+}
+
+.recommend-card p{
+  font-size:9px;
+  line-height:1.45;
+}
+
+.recommend-card span{
+  margin-top:5px;
+  font-size:9px;
+}
+
+/* 攻略本与实用入口一起软化边缘 */
+.notebook-card{
+  border-radius:16px;
+  border-color:rgba(171,133,99,.36);
+  background:linear-gradient(180deg,rgba(255,250,242,.98),rgba(244,232,216,.86));
+  box-shadow:0 5px 14px rgba(86,62,42,.04);
+}
+
+.practical-grid button{
+  border-radius:16px;
+  border-color:var(--soft-border);
+  background:rgba(255,250,243,.94);
+}
+
+.encouragement{
+  border-radius:0 16px 16px 0;
+}
+
+/* 3. 右下角小愿望：保持“小、方、随手贴”，不撑满右下区域 */
+.bottom-tools-grid{
+  grid-template-columns:minmax(0,1.34fr) minmax(300px,.66fr);
+  align-items:start;
+}
+
+.wish-stack{
+  width:min(305px,82%);
+  aspect-ratio:1 / 1;
+  justify-self:center;
+  align-self:start;
+  margin:12px 18px 0 0;
+  padding:10px;
+  transform:rotate(-2.15deg);
+  transition:transform .2s ease;
+}
+
+.wish-stack:hover{
+  transform:rotate(-1.35deg) translateY(-2px);
+}
+
+.wish-stack::before,
+.wish-stack::after{
+  clip-path:none;
+  border-radius:24px 29px 25px 28px;
+  border:1px solid rgba(137,106,76,.12);
+  box-shadow:0 7px 16px rgba(78,57,39,.055);
+}
+
+.wish-stack::before{
+  transform:translate(-7px,5px) rotate(-1.4deg);
+}
+
+.wish-stack::after{
+  transform:translate(6px,6px) rotate(1.15deg);
+}
+
+.wish-sheet{
+  clip-path:none;
+  border-radius:25px 30px 24px 28px;
+  border:1px solid rgba(137,105,74,.17);
+  background:linear-gradient(180deg,#faf1df 0%,#f4e7d0 100%);
+  box-shadow:0 11px 25px rgba(87,63,43,.085);
+  padding:40px 24px 21px;
+}
+
+.wish-tape{
+  width:58px;
+  height:27px;
+  top:-6px;
+  border-radius:5px;
+  clip-path:none;
+  transform:translateX(-50%) rotate(-6deg);
+  background:rgba(222,207,179,.78);
+}
+
+.wish-sheet h2{
+  font-size:22px;
+  margin-bottom:11px;
+}
+
+.wish-kicker{
+  font-size:9px;
+}
+
+.home-wish-list{
+  gap:5px;
+}
+
+.home-wish-item{
+  grid-template-columns:16px minmax(0,1fr);
+  gap:6px;
+  padding:5px 0 6px;
+  font-size:13px;
+  line-height:1.4;
+  border-bottom-color:rgba(143,110,78,.10);
+}
+
+.wish-home-footer{
+  padding-top:7px;
+  font-size:9px;
+}
+
+/* 中等尺寸仍尽量保持单行；空间不够时允许横向浏览，而不是强拆成两行 */
+@media (max-width:1380px){
+  .area-grid{
+    grid-template-columns:repeat(6,minmax(190px,1fr));
+    overflow-x:auto;
+    padding-bottom:8px;
+    scroll-snap-type:x proximity;
+  }
+  .area-card{scroll-snap-align:start}
+
+  .recommend-grid{
+    grid-template-columns:repeat(4,minmax(135px,1fr));
+    overflow-x:auto;
+    padding-bottom:6px;
+  }
+
+  .wish-stack{
+    width:min(290px,88%);
+    margin-right:6px;
+  }
+}
+
+@media (max-width:1180px){
+  .bottom-tools-grid{grid-template-columns:1fr}
+  .wish-stack{
+    width:min(300px,100%);
+    justify-self:end;
+    margin:8px 20px 0 0;
+  }
+}
+
+@media (max-width:720px){
+  .area-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    overflow:visible;
+  }
+  .area-card{
+    min-height:250px;
+    grid-template-rows:125px auto;
+  }
+  .recommend-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    overflow:visible;
+  }
+  .wish-stack{
+    width:min(290px,88vw);
+    justify-self:center;
+    margin:8px auto 0;
+  }
+}
+
+@media (max-width:460px){
+  .area-grid,
+  .recommend-grid{
+    grid-template-columns:1fr;
+  }
+}
