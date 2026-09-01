@@ -1,21 +1,22 @@
 (() => {
   const STORAGE_KEY = 'italy-travel-guide:wishes:v1';
+  const HOME_WISH_LIMIT = 3;
 
   const defaults = [
     {id:'wish-sicily-sunset', text:'在西西里看一次海边日落', done:false, featured:true},
-    {id:'wish-local-restaurant', text:'找一家没有游客的小餐馆', done:false, featured:false},
-    {id:'wish-gondola', text:'坐一次贡多拉', done:false, featured:false}
+    {id:'wish-local-restaurant', text:'找一家没有游客的小餐馆', done:false, featured:true},
+    {id:'wish-gondola', text:'坐一次贡多拉', done:false, featured:true}
   ];
 
   const homeButton = document.querySelector('#open-wishlist');
-  const featuredText = document.querySelector('#featured-wish-text');
+  const homeList = document.querySelector('#home-wish-list');
   const wishCount = document.querySelector('#wish-count');
   const dialog = document.querySelector('#wishlist-dialog');
   const form = document.querySelector('#wish-form');
   const input = document.querySelector('#wish-input');
   const items = document.querySelector('#wish-items');
 
-  if (!homeButton || !featuredText || !wishCount || !dialog || !form || !input || !items) return;
+  if (!homeButton || !homeList || !wishCount || !dialog || !form || !input || !items) return;
 
   function cloneDefaults() {
     return defaults.map(item => ({...item}));
@@ -43,50 +44,71 @@
 
   let wishes = loadWishes();
 
-  function ensureFeatured() {
-    if (!wishes.length) return;
+  function ensureHomepageSelection(skipId='') {
+    wishes.forEach(item => {
+      if (item.done) item.featured = false;
+    });
 
-    const featured = wishes.find(item => item.featured && !item.done);
-    if (featured) {
-      wishes.forEach(item => { item.featured = item.id === featured.id; });
-      return;
+    const selected = wishes.filter(item => item.featured && !item.done);
+    selected.slice(HOME_WISH_LIMIT).forEach(item => { item.featured = false; });
+
+    let count = wishes.filter(item => item.featured && !item.done).length;
+    if (count >= HOME_WISH_LIMIT) return;
+
+    const candidates = wishes.filter(item => !item.done && !item.featured && item.id !== skipId);
+    for (const item of candidates) {
+      item.featured = true;
+      count += 1;
+      if (count >= HOME_WISH_LIMIT) return;
     }
 
-    const next = wishes.find(item => !item.done) || wishes[0];
-    wishes.forEach(item => { item.featured = item.id === next.id; });
+    if (count < HOME_WISH_LIMIT && skipId) {
+      const skipped = wishes.find(item => item.id === skipId && !item.done && !item.featured);
+      if (skipped) skipped.featured = true;
+    }
   }
 
-  function saveWishes() {
-    ensureFeatured();
+  function saveWishes(skipId='') {
+    ensureHomepageSelection(skipId);
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(wishes));
     } catch {
-      // GitHub Pages 原型在浏览器禁用本地存储时仍可继续使用当前会话。
+      // 如果浏览器禁用本地存储，原型仍可在当前会话继续操作。
     }
   }
 
-  function getFeaturedWish() {
-    ensureFeatured();
-    return wishes.find(item => item.featured) || null;
+  function getHomepageWishes() {
+    ensureHomepageSelection();
+    return wishes.filter(item => item.featured && !item.done).slice(0, HOME_WISH_LIMIT);
   }
 
   function renderHome() {
-    const featured = getFeaturedWish();
+    const featured = getHomepageWishes();
     const incomplete = wishes.filter(item => !item.done).length;
 
-    if (!featured) {
-      featuredText.textContent = '写下这趟意大利旅行最想完成的一件事';
+    homeList.replaceChildren();
+
+    if (!featured.length) {
+      const empty = document.createElement('span');
+      empty.className = 'home-wish-item';
+      empty.textContent = '写下这趟意大利旅行最想完成的事';
+      homeList.appendChild(empty);
       wishCount.textContent = '还没有心愿 · 点这里写下第一个 →';
       return;
     }
 
-    featuredText.textContent = featured.text;
-    if (wishes.length === 1) {
-      wishCount.textContent = '1 个心愿 · 打开心愿本 →';
-    } else if (incomplete === 0) {
+    featured.forEach(wish => {
+      const line = document.createElement('span');
+      line.className = 'home-wish-item';
+      line.textContent = wish.text;
+      homeList.appendChild(line);
+    });
+
+    const shown = featured.length;
+    if (incomplete === 0) {
       wishCount.textContent = `${wishes.length} 个心愿都完成啦 · 查看心愿本 →`;
     } else {
-      wishCount.textContent = `${wishes.length} 个心愿 · ${incomplete} 个待完成 · 打开心愿本 →`;
+      wishCount.textContent = `主页展示 ${shown} 条 · 共 ${wishes.length} 个心愿 · 打开心愿本 →`;
     }
   }
 
@@ -136,9 +158,9 @@
 
       const star = makeActionButton(
         'wish-star',
-        wish.featured ? '当前主页心愿' : '设为主页最想完成的心愿',
+        wish.featured ? '已选为主页心愿' : '选为主页最想完成的心愿',
         wish.featured ? '★' : '☆',
-        wish.featured ? '现在展示在主页' : '放到主页上'
+        wish.featured ? '正在主页展示，点击可换出' : '放到主页上（最多展示3条）'
       );
       star.dataset.action = 'feature';
 
@@ -151,7 +173,7 @@
   }
 
   function renderAll() {
-    ensureFeatured();
+    ensureHomepageSelection();
     renderHome();
     renderDialog();
   }
@@ -162,6 +184,12 @@
   }
 
   homeButton.addEventListener('click', openWishlist);
+  homeButton.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openWishlist();
+    }
+  });
 
   form.addEventListener('submit', event => {
     event.preventDefault();
@@ -172,7 +200,7 @@
       id:`wish-${Date.now()}-${Math.random().toString(16).slice(2)}`,
       text,
       done:false,
-      featured:wishes.length === 0
+      featured:false
     });
     input.value = '';
     saveWishes();
@@ -190,19 +218,30 @@
 
     if (button.dataset.action === 'toggle-done') {
       wish.done = !wish.done;
-      if (wish.done && wish.featured) wish.featured = false;
+      if (wish.done) wish.featured = false;
+      saveWishes(wish.done ? wish.id : '');
     }
 
     if (button.dataset.action === 'feature') {
-      wishes.forEach(item => { item.featured = item.id === wish.id; });
-      wish.done = false;
+      if (wish.featured) {
+        wish.featured = false;
+        saveWishes(wish.id);
+      } else {
+        const selected = wishes.filter(item => item.featured && !item.done);
+        if (selected.length >= HOME_WISH_LIMIT) {
+          selected[selected.length - 1].featured = false;
+        }
+        wish.featured = true;
+        wish.done = false;
+        saveWishes();
+      }
     }
 
     if (button.dataset.action === 'delete') {
       wishes = wishes.filter(item => item.id !== wish.id);
+      saveWishes();
     }
 
-    saveWishes();
     renderAll();
   });
 
