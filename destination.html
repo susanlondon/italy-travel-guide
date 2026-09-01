@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="意游记目的地攻略" />
+  <meta name="app-version" content="Web V0.10" />
+  <title>目的地｜意游记</title>
+  <link rel="stylesheet" href="styles.css?v=0.10" />
+  <link rel="stylesheet" href="subpages.css?v=0.10" />
+</head>
+<body>
+  <div class="site-shell subpage-shell">
+    <header class="topbar subpage-topbar">
+      <a class="brand" href="index.html" aria-label="返回首页">
+        <span class="brand-mark" aria-hidden="true">▥</span>
+        <span><strong>意游记</strong><small>你的意大利旅行指南</small></span>
+      </a>
+      <nav class="main-nav subpage-nav" aria-label="子页面导航">
+        <a href="index.html">首页</a>
+        <a href="area.html?id=A01">罗马及意大利中部</a>
+        <a class="active" href="#places">景点</a>
+      </nav>
+      <div class="top-actions">
+        <span class="version-badge">Web V0.10</span>
+        <a class="soft-link" href="area.html?id=A01">← 返回区域</a>
+      </div>
+    </header>
+
+    <main class="subpage-main">
+      <div class="breadcrumb" aria-label="面包屑">
+        <a href="index.html">首页</a><span>›</span><a href="area.html?id=A01">罗马及意大利中部</a><span>›</span><strong id="breadcrumb-destination">目的地</strong>
+      </div>
+
+      <section class="destination-hero paper-surface">
+        <div>
+          <p id="destination-type" class="subpage-eyebrow">DESTINATION</p>
+          <h1 id="destination-title">罗马</h1>
+          <p id="destination-original" class="original-name">Roma</p>
+          <div id="destination-meta" class="destination-meta"></div>
+          <p id="destination-note" class="lead-copy destination-note"></p>
+        </div>
+        <div class="destination-postcard" aria-hidden="true">
+          <div class="postcard-stamp">ITALIA<br><small>V0.10</small></div>
+          <div class="postcard-line"></div>
+          <strong id="postcard-name">ROMA</strong>
+          <span>旅行手账 · Destination</span>
+        </div>
+      </section>
+
+      <section id="child-destinations" class="child-section" hidden>
+        <div class="subpage-section-heading compact-heading">
+          <div>
+            <p class="subpage-eyebrow">SUB AREA</p>
+            <h2>这个目的地里还有</h2>
+          </div>
+        </div>
+        <div id="child-grid" class="child-grid"></div>
+      </section>
+
+      <section id="places" class="places-section">
+        <div class="places-heading">
+          <div>
+            <p class="subpage-eyebrow">PLACES</p>
+            <h2 id="places-heading-title">景点与攻略条目</h2>
+            <p id="places-count"></p>
+          </div>
+          <div id="place-filters" class="place-filters" aria-label="景点筛选"></div>
+        </div>
+        <div id="place-grid" class="place-grid"></div>
+      </section>
+    </main>
+
+    <footer class="footer subpage-footer">
+      <span id="footer-destination">La Dolce Vita ♡</span>
+      <p>Web V0.10 · Destination Page Prototype</p>
+    </footer>
+  </div>
+
+  <script src="v010-data.js?v=0.10"></script>
+  <script src="destination.js?v=0.10"></script>
+</body>
+</html>
