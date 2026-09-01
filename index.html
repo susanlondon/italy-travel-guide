@@ -4,8 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="意游记：以攻略为核心的意大利旅行指南原型。" />
+  <meta name="app-version" content="Web V0.6" />
   <title>意游记｜意大利旅行攻略</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=0.6" />
 </head>
 <body>
   <div class="site-shell">
@@ -23,6 +24,7 @@
         <a href="#about">关于</a>
       </nav>
       <div class="top-actions">
+        <span class="version-badge" title="当前原型版本">Web V0.6</span>
         <button class="icon-button" type="button" data-toast="收藏夹将在下一阶段接入">♡ <span>收藏</span></button>
         <button class="icon-button" type="button" data-toast="我的攻略本将在后续接入个人账号">▣ <span>我的攻略本</span></button>
       </div>
@@ -107,25 +109,41 @@
         </div>
       </section>
 
-      <section id="practical" class="practical scrapbook-sheet">
-        <div class="panel-heading compact"><div><h2>实用攻略速览</h2><p>所有功能仍然围绕“攻略”本身展开。</p></div></div>
-        <div class="practical-grid">
-          <button type="button" data-toast="门票与预约攻略将在内容页展开"><span>🎟</span><strong>门票 & 预约</strong><small>热门景点是否需要预约</small></button>
-          <button type="button" data-toast="交通攻略将在内容页展开"><span>🚆</span><strong>交通换乘</strong><small>火车、公交与轮渡</small></button>
-          <button type="button" data-toast="自驾与停车攻略将在内容页展开"><span>🚗</span><strong>停车与自驾</strong><small>ZTL、停车与驾驶提醒</small></button>
-          <button type="button" data-toast="行李与出行注意事项将在内容页展开"><span>🧳</span><strong>行李与注意事项</strong><small>旅行前后的实用提醒</small></button>
-          <button type="button" id="emergency-shortcut"><span>☎</span><strong>紧急信息</strong><small>报警、医疗与领事协助</small></button>
-        </div>
+      <section class="bottom-tools-grid" aria-label="攻略工具与意大利小愿望">
+        <section id="practical" class="practical compact-practical scrapbook-sheet">
+          <div class="panel-heading compact">
+            <div><h2>实用攻略入口</h2><p>出发前、转场时、需要帮助时，都能从这里快速找到对应攻略。</p></div>
+          </div>
+          <div class="practical-grid practical-grid-four">
+            <button type="button" data-toast="后续子页面会整理意大利开车、停车、ZTL、自驾与无人机等通用旅行须知"><span>🧭</span><strong>出发前看看</strong><small>开车、停车、ZTL、无人机等</small></button>
+            <button type="button" data-toast="后续会做一张意大利交通图，展示大区与城市之间怎么走、使用什么交通以及大致时间"><span>🚆</span><strong>下一站怎么走</strong><small>城市之间的交通与时间</small></button>
+            <button type="button" id="emergency-shortcut"><span>☎</span><strong>旅途求助</strong><small>报警、急救与使领馆信息</small></button>
+            <button type="button" data-toast="我的行程本后续支持自己添加航班、车票、船票以及个人行程信息"><span>📔</span><strong>我的行程本</strong><small>记录航班、车票与个人行程</small></button>
+          </div>
+        </section>
+
+        <aside id="wishlist" class="wish-board" aria-labelledby="wish-title">
+          <span class="wish-magnet magnet-left" aria-hidden="true"></span>
+          <span class="wish-magnet magnet-right" aria-hidden="true"></span>
+          <span class="wish-stamp" aria-hidden="true">ITALIA<br>AMORE</span>
+          <p class="wish-kicker">给这趟旅程留一点期待</p>
+          <h2 id="wish-title">♡ 意大利小愿望</h2>
+          <ul class="wish-list">
+            <li><span>○</span>在西西里看一次海边日落</li>
+            <li><span>○</span>找一家没有游客的小餐馆</li>
+            <li><span>○</span>坐一次贡多拉</li>
+          </ul>
+          <button id="add-wish" type="button">＋ 写下一个小愿望</button>
+        </aside>
       </section>
     </main>
 
     <footer id="about" class="footer">
       <span>La Dolce Vita ♡</span>
-      <p>V0 首页原型 · 数据来自你的意大利攻略数据库 · 图片目前为插画/占位素材</p>
+      <p>Web V0.6 · 首页原型 · 数据来自你的意大利攻略数据库 · 图片目前为插画/占位素材</p>
     </footer>
   </div>
 
-  <div class="modal-backdrop" id="modal-backdrop" hidden></div>
   <dialog id="planner-dialog" class="paper-dialog">
     <button class="dialog-close" type="button" data-close-dialog="planner-dialog" aria-label="关闭">×</button>
     <h2>行程规划子页面</h2>
@@ -141,16 +159,16 @@
 
   <dialog id="emergency-dialog" class="paper-dialog">
     <button class="dialog-close" type="button" data-close-dialog="emergency-dialog" aria-label="关闭">×</button>
-    <h2>紧急联系电话</h2>
-    <p class="muted">这里先建立功能入口；具体号码会从你的攻略数据中整理后再接入。</p>
+    <h2>旅途求助</h2>
+    <p class="muted">这里会集中放旅行中真正需要快速找到的应急信息，包括报警、急救、中国驻意大利使领馆及其他求助方式。</p>
     <div class="emergency-list">
       <div><strong>欧洲统一紧急电话</strong><span>112</span></div>
-      <div><strong>医疗 / 警务 / 领事协助</strong><span>待从攻略数据接入</span></div>
+      <div><strong>中国驻意大利使领馆 / 其他应急联系方式</strong><span>后续从攻略数据接入</span></div>
     </div>
   </dialog>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="data.js"></script>
-  <script src="app.js"></script>
+  <script src="data.js?v=0.6"></script>
+  <script src="app.js?v=0.6"></script>
 </body>
 </html>
