@@ -98,7 +98,11 @@
     const areaButton = event.target.closest('[data-area-open]');
     if (areaButton) {
       const area = data.areas.find(item => item.id === areaButton.dataset.areaOpen);
-      if (area) showToast(`${area.name} 子页面将在下一阶段接入`);
+      if (areaButton.dataset.areaOpen === 'A01') {
+        location.href = 'area.html?id=A01';
+      } else if (area) {
+        showToast(`${area.name} 子页面将在后续版本接入`);
+      }
     }
 
     const hotspot = event.target.closest('[data-area]');
