@@ -1,103 +1,91 @@
-/* Web V0.7 — 意大利小愿望：不规则手账便签 + 可编辑心愿本 */
+/* Web V0.8 — 意大利小愿望：轻复古方形手账便签 + 可编辑心愿本 */
+
+.bottom-tools-grid{
+  align-items:start;
+}
 
 .wish-stack{
   position:relative;
-  min-height:248px;
-  padding:20px 22px;
+  width:min(348px,88%);
+  aspect-ratio:1 / 1;
+  justify-self:center;
+  align-self:start;
+  padding:14px;
   color:#594536;
-  transform:rotate(-.35deg);
   isolation:isolate;
+  transform:rotate(-.7deg);
 }
 
+/* 背后的两张纸只做很轻的层次，不再用重描边和脏旧纹理 */
 .wish-stack::before,
 .wish-stack::after{
   content:"";
   position:absolute;
-  inset:20px 18px 12px 18px;
-  background:#e7d7bd;
-  border:2px solid rgba(69,56,46,.78);
-  box-shadow:0 8px 16px rgba(77,55,37,.08);
-  clip-path:polygon(2% 4%,97% 1%,100% 93%,96% 98%,4% 100%,0 8%);
+  inset:15px 12px 11px 14px;
   z-index:-2;
+  background:#eadfca;
+  border:1px solid rgba(126,103,78,.18);
+  box-shadow:0 7px 18px rgba(78,57,39,.07);
+  clip-path:polygon(2% 1%,98% 2%,99% 97%,3% 99%);
 }
 
 .wish-stack::before{
-  transform:translate(-8px,5px) rotate(-2.1deg);
-  background:#eee0c9;
+  transform:translate(-8px,5px) rotate(-2deg);
+  background:#efe5d4;
 }
 
 .wish-stack::after{
-  transform:translate(8px,9px) rotate(1.7deg);
-  background:#dfceb1;
+  transform:translate(7px,7px) rotate(1.4deg);
+  background:#e5d7c0;
   z-index:-3;
 }
 
 .wish-sheet{
   position:relative;
-  min-height:208px;
-  padding:36px 30px 24px;
-  background:
-    linear-gradient(rgba(246,233,205,.92),rgba(239,220,185,.92)),
-    repeating-linear-gradient(0deg,rgba(126,101,71,.035) 0 1px,transparent 1px 15px);
-  border:2px solid rgba(61,52,44,.88);
-  box-shadow:0 14px 26px rgba(88,63,43,.13);
-  clip-path:polygon(1% 4%,8% 3%,18% 4%,31% 2%,45% 3%,58% 1.5%,72% 3%,87% 2%,99% 4%,98% 20%,100% 38%,98% 57%,100% 76%,97% 98%,78% 97%,61% 99%,43% 97%,25% 99%,3% 97%,2% 80%,0 61%,2% 43%,0 23%);
+  width:100%;
+  height:100%;
+  padding:44px 28px 24px;
+  background:linear-gradient(180deg,#f8eedb 0%,#f3e5ce 100%);
+  border:1px solid rgba(122,95,69,.22);
+  box-shadow:0 12px 24px rgba(87,63,43,.10);
+  clip-path:polygon(1.5% 1.2%,98.5% .5%,99.2% 97.5%,97% 99%,2% 98.2%,.7% 4%);
+  display:flex;
+  flex-direction:column;
 }
 
-.wish-sheet::before{
-  content:"";
-  position:absolute;
-  left:14px;
-  top:18px;
-  width:16px;
-  height:54px;
-  border-left:2px solid rgba(63,52,44,.8);
-  border-top:2px solid rgba(63,52,44,.8);
-  transform:rotate(-2deg);
-  opacity:.75;
-}
-
-.wish-sheet::after{
-  content:"";
-  position:absolute;
-  right:22px;
-  top:22px;
-  width:42px;
-  height:8px;
-  border-top:2px dashed rgba(63,52,44,.75);
-  opacity:.65;
-}
-
+/* 顶部胶带：偏干净、半透明的旧纸胶带 */
 .wish-tape{
   position:absolute;
   z-index:4;
-  top:-5px;
+  top:-7px;
   left:50%;
-  width:54px;
-  height:34px;
-  transform:translateX(-50%) rotate(-7deg);
-  background:rgba(244,238,218,.9);
-  border:2px solid rgba(63,52,44,.82);
-  box-shadow:0 3px 5px rgba(78,58,42,.08);
-  clip-path:polygon(7% 2%,95% 0,100% 91%,89% 100%,6% 94%,0 11%);
+  width:62px;
+  height:31px;
+  transform:translateX(-50%) rotate(-5deg);
+  background:rgba(226,211,181,.83);
+  box-shadow:0 2px 4px rgba(86,63,43,.06);
+  clip-path:polygon(5% 5%,96% 0,100% 88%,92% 100%,3% 94%,0 12%);
 }
 
 .wish-kicker{
   margin:0 0 2px;
-  color:#8b725d;
-  font-size:11px;
+  color:#9a7a61;
+  font-size:10px;
+  letter-spacing:.03em;
 }
 
 .wish-sheet h2{
-  margin:0;
-  font:700 25px "STKaiti","KaiTi",serif;
-  color:#654735;
+  margin:0 0 15px;
+  font:700 24px "STKaiti","KaiTi",serif;
+  color:#684a37;
 }
 
 .featured-wish{
-  display:block;
+  display:flex;
+  flex-direction:column;
+  flex:1;
   width:100%;
-  margin-top:18px;
+  margin:0;
   padding:0;
   border:0;
   background:transparent;
@@ -108,31 +96,65 @@
 
 .featured-wish-label{
   display:inline-block;
-  margin-bottom:5px;
-  color:#a76547;
+  align-self:flex-start;
+  margin-bottom:8px;
+  color:#a76649;
   font-size:10px;
   letter-spacing:.08em;
 }
 
-.featured-wish strong{
-  display:block;
-  max-width:92%;
-  font:700 clamp(19px,1.55vw,27px)/1.38 "STKaiti","KaiTi",serif;
-  color:#4f3e31;
+.home-wish-list{
+  display:grid;
+  gap:8px;
 }
 
-.featured-wish small{
-  display:block;
-  margin-top:12px;
-  color:#92725b;
-  font-size:11px;
+.home-wish-item{
+  display:grid;
+  grid-template-columns:18px minmax(0,1fr);
+  gap:7px;
+  align-items:start;
+  padding-bottom:7px;
+  border-bottom:1px solid rgba(143,110,78,.14);
+  color:#4f4035;
+  font:700 15px/1.45 "STKaiti","KaiTi",serif;
 }
 
-.featured-wish:hover strong{color:#a35e40}
-.featured-wish:hover small{text-decoration:underline;text-underline-offset:3px}
+.home-wish-item::before{
+  content:"♡";
+  color:#b16a4b;
+  font-family:Georgia,serif;
+  font-size:14px;
+  line-height:1.45;
+}
 
+.home-wish-item:last-child{
+  border-bottom:0;
+}
+
+.wish-home-footer{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-top:auto;
+  padding-top:10px;
+  color:#93745d;
+  font-size:10px;
+}
+
+.wish-home-footer strong{
+  color:#9f5f43;
+  font-weight:600;
+}
+
+.featured-wish:hover .wish-home-footer strong{
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+
+/* 心愿本弹窗：这里才承担完整编辑功能 */
 .wish-dialog{
-  max-width:760px;
+  max-width:780px;
 }
 
 .wish-dialog-header{
@@ -188,18 +210,18 @@
   align-items:center;
   gap:7px;
   padding:8px 9px;
-  border:1px dashed #d4bfa6;
+  border:1px solid #e0d0bd;
   border-radius:8px;
-  background:rgba(255,252,245,.78);
+  background:rgba(255,252,245,.86);
 }
 
 .wish-row.is-featured{
-  border-color:#b87853;
-  background:#f8ead7;
+  border-color:#c99372;
+  background:#f9ecda;
 }
 
 .wish-row.is-done{
-  opacity:.62;
+  opacity:.58;
 }
 
 .wish-check,
@@ -250,14 +272,26 @@
   border-radius:8px;
 }
 
+@media(max-width:1380px){
+  .wish-stack{width:min(320px,92%)}
+}
+
 @media(max-width:1180px){
-  .wish-stack{min-height:230px}
+  .wish-stack{
+    width:min(340px,100%);
+    justify-self:start;
+    margin-top:2px;
+  }
 }
 
 @media(max-width:720px){
-  .wish-stack{padding:16px 10px 20px}
-  .wish-sheet{padding:34px 24px 24px}
-  .featured-wish strong{font-size:22px}
+  .wish-stack{
+    width:min(330px,94vw);
+    justify-self:center;
+    padding:12px;
+  }
+  .wish-sheet{padding:41px 24px 22px}
+  .home-wish-item{font-size:15px}
   .wish-row{grid-template-columns:32px minmax(0,1fr) 38px 34px}
 }
 
