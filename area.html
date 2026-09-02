@@ -4,11 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="意游记区域攻略：罗马及意大利中部" />
-  <meta name="app-version" content="Web V0.10.1" />
+  <meta name="app-version" content="Web V0.11" />
   <title>罗马及意大利中部｜意游记</title>
   <link rel="stylesheet" href="styles.css?v=0.10" />
   <link rel="stylesheet" href="subpages.css?v=0.10" />
   <link rel="stylesheet" href="card-interactions.css?v=0.10.1" />
+  <link rel="stylesheet" href="area-v011.css?v=0.11" />
 </head>
 <body>
   <div class="site-shell subpage-shell">
@@ -23,7 +24,7 @@
         <a href="#destinations">目的地</a>
       </nav>
       <div class="top-actions">
-        <span class="version-badge">Web V0.10.1</span>
+        <span class="version-badge">Web V0.11</span>
         <a class="soft-link" href="index.html#areas">← 返回六大区域</a>
       </div>
     </header>
@@ -45,24 +46,11 @@
           <div class="sketch-paper">
             <span class="sketch-label">区域导航示意</span>
             <div class="sketch-route"></div>
-            <a class="sketch-pin pin-rome" href="destination.html?id=D001"><b>Roma</b><small>罗马</small></a>
-            <a class="sketch-pin pin-civita" href="destination.html?id=D003"><b>Civita</b><small>白露里治奥</small></a>
-            <a class="sketch-pin pin-orvieto" href="destination.html?id=D004"><b>Orvieto</b><small>奥尔维耶托</small></a>
-            <span class="sketch-note">当前为层级导航示意；真实地图位置将在地图模块接入后替换。</span>
+            <button class="sketch-pin pin-rome" type="button" data-select-destination="D001"><b>Roma</b><small>罗马</small></button>
+            <button class="sketch-pin pin-civita" type="button" data-select-destination="D003"><b>Civita</b><small>白露里治奥</small></button>
+            <button class="sketch-pin pin-orvieto" type="button" data-select-destination="D004"><b>Orvieto</b><small>奥尔维耶托</small></button>
+            <span class="sketch-note">点击上方目的地或下方卡片，会在本页切换对应攻略内容。</span>
           </div>
-        </div>
-      </section>
-
-      <section class="area-note-row">
-        <div class="mini-note rust-note">
-          <span>这一区怎么读？</span>
-          <strong>罗马是主枢纽</strong>
-          <p>梵蒂冈作为罗马内部子区域；白露里治奥与奥尔维耶托作为关联目的地。</p>
-        </div>
-        <div class="mini-note cream-note">
-          <span>数据来源</span>
-          <strong>你的 V1.1 攻略数据库</strong>
-          <p>这里直接使用表格中的 Destination 层级、推荐天数、人气与景点数据。</p>
         </div>
       </section>
 
@@ -71,30 +59,27 @@
           <div>
             <p class="subpage-eyebrow">DESTINATIONS</p>
             <h2>从这里选择下一站</h2>
-            <p>整张目的地卡片都可以点击，进入对应城市 / 小镇的景点与攻略条目。</p>
+            <p>默认先看罗马。点击目的地后，会平滑滚动到下方，并且只展示当前目的地相关的景点内容。</p>
           </div>
         </div>
         <div id="destination-grid" class="destination-grid"></div>
       </section>
 
-      <section class="area-next paper-surface">
-        <div>
-          <p class="subpage-eyebrow">NEXT</p>
-          <h2>先把一条完整路径跑通</h2>
-          <p>V0.10 先验证 <strong>Area → Destination → Place</strong>。等罗马这一组顺了，再把同一套模板扩展到米兰、威尼斯、佛罗伦萨、那不勒斯和西西里。</p>
-        </div>
-        <a class="primary-link" href="destination.html?id=D001">先进入罗马 →</a>
+      <section id="destination-focus" class="destination-focus paper-surface" aria-live="polite">
+        <div id="focus-header" class="focus-header"></div>
+        <div id="focus-content"></div>
+        <p class="focus-switch-note">想看另一个目的地？直接点击上方罗马 / 白露里治奥 / 奥尔维耶托卡片即可切换。</p>
       </section>
     </main>
 
     <footer class="footer subpage-footer">
       <span>Roma · Civita · Orvieto</span>
-      <p>Web V0.10.1 · Area Page Prototype</p>
+      <p>Web V0.11 · Focused Area Guide Experiment</p>
     </footer>
   </div>
 
   <script src="v010-data.js?v=0.10"></script>
-  <script src="area.js?v=0.10"></script>
+  <script src="area.js?v=0.11"></script>
   <script src="card-interactions.js?v=0.10.1"></script>
 </body>
 </html>
