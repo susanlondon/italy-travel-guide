@@ -1,0 +1,143 @@
+/* Web V0.11 — Area 单页目的地聚焦浏览实验 */
+
+/* 上半部分继续沿用 V0.10 的手账语言，只把目的地卡变成页内选择器。 */
+.destination-section{padding-bottom:22px}
+.destination-switch{cursor:pointer;outline:none}
+.destination-switch::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border:2px solid transparent;
+  border-radius:26px;
+  pointer-events:none;
+  transition:border-color .18s ease,box-shadow .18s ease;
+}
+.destination-switch.is-selected{
+  transform:translateY(-3px);
+  border-color:rgba(169,95,66,.42);
+  box-shadow:0 16px 34px rgba(91,66,43,.12);
+}
+.destination-switch.is-selected::after{
+  border-color:rgba(169,95,66,.58);
+  box-shadow:inset 0 0 0 2px rgba(255,250,242,.78);
+}
+.destination-switch.is-selected .destination-card-art::after{
+  background:rgba(180,104,74,.26);
+}
+.destination-card-cta{margin-top:auto;padding-top:15px;color:#a15d40;font-weight:700;font-size:12px}
+
+/* 地图点也成为同一套页内切换入口。 */
+.sketch-pin{
+  appearance:none;
+  -webkit-appearance:none;
+  font:inherit;
+  cursor:pointer;
+  padding:0;
+}
+.sketch-pin.is-selected{
+  box-shadow:0 0 0 5px rgba(255,250,240,.9),0 10px 24px rgba(85,58,40,.22);
+  transform:translateY(-3px);
+}
+
+/* 单目的地内容区：同一时间只展示一个城市 / 小镇。 */
+.destination-focus{
+  margin-top:6px;
+  padding:30px clamp(24px,3vw,42px) 34px;
+  scroll-margin-top:92px;
+  overflow:hidden;
+}
+.focus-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:28px;
+  padding-bottom:20px;
+  border-bottom:1px solid rgba(151,118,84,.16);
+}
+.focus-heading-row{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.focus-heading-row h2{margin:0;font:700 34px "STKaiti","KaiTi",serif;color:#493a2f}
+.focus-heading-row em{color:#9c8877;font:italic 14px Georgia,serif}
+.focus-intro{max-width:720px;margin:7px 0 0;color:#77685a;font-size:12px;line-height:1.7}
+.focus-meta{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+.focus-meta span{padding:6px 9px;border-radius:999px;background:#f2e6d7;color:#7d654f;font-size:10px;white-space:nowrap}
+.focus-meta b{color:#a15d40}
+
+.focus-block{padding-top:22px}
+.focus-block-heading{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:12px}
+.focus-block-heading h3{margin:0;font:700 22px "STKaiti","KaiTi",serif;color:#4c3c31}
+.focus-block-heading p{margin:2px 0 0;color:#927f6e;font-size:10px}
+
+.focus-place-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(168px,1fr));
+  gap:10px;
+}
+.focus-place-card{
+  min-width:0;
+  border:1px solid rgba(151,118,84,.18);
+  border-radius:17px;
+  background:#fffaf3;
+  overflow:hidden;
+  box-shadow:0 6px 15px rgba(91,66,43,.04);
+}
+.focus-place-visual{
+  position:relative;
+  height:82px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(145deg,#eadbc8,#e1ebe4);
+  overflow:hidden;
+}
+.focus-place-visual::before,
+.focus-place-visual::after{content:"";position:absolute;border-radius:50%;background:rgba(255,250,242,.42)}
+.focus-place-visual::before{width:88px;height:88px;right:-25px;top:-32px}
+.focus-place-visual::after{width:58px;height:58px;left:-18px;bottom:-22px}
+.focus-place-icon{position:relative;z-index:1;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:rgba(255,250,242,.82);font-size:19px;color:#765f4c}
+.focus-place-body{padding:11px 12px 12px}
+.focus-place-body h4{margin:0;font:700 16px/1.35 "STKaiti","KaiTi",serif;color:#4c3d32}
+.focus-place-body .original{margin:1px 0 7px;color:#9f8977;font:italic 9px Georgia,serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.focus-place-tags{display:flex;gap:4px;flex-wrap:wrap}
+.focus-place-tags span{padding:3px 6px;border-radius:999px;background:#f2e7d9;color:#826d5c;font-size:8px}
+
+/* 罗马内部的梵蒂冈，只作为轻量补充，不再形成新的页面层级。 */
+.focus-subarea{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:minmax(180px,.55fr) minmax(0,1.45fr);
+  gap:16px;
+  align-items:center;
+  padding:16px 18px;
+  border-radius:18px;
+  background:#eef1e8;
+  border:1px solid rgba(112,130,96,.15);
+}
+.focus-subarea-copy small{display:block;color:#7e8d71;font-size:9px;letter-spacing:.1em}
+.focus-subarea-copy strong{display:block;margin:2px 0 5px;font:700 20px "STKaiti","KaiTi",serif;color:#4e5846}
+.focus-subarea-copy p{margin:0;color:#73806b;font-size:10px;line-height:1.55}
+.focus-subarea-places{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.focus-subarea-place{padding:8px 10px;border-radius:13px;background:rgba(255,250,242,.82);border:1px solid rgba(115,132,99,.13);font-size:10px;color:#5d654f}
+.focus-subarea-place b{display:block;font:700 14px "STKaiti","KaiTi",serif;color:#4d5545}
+
+.focus-more{margin-top:18px;border-top:1px dashed rgba(151,118,84,.22);padding-top:14px}
+.focus-more summary{cursor:pointer;color:#9f6044;font-weight:700;font-size:11px;list-style:none;display:inline-flex;align-items:center;gap:6px}
+.focus-more summary::-webkit-details-marker{display:none}
+.focus-more summary::after{content:"↓";transition:transform .16s ease}
+.focus-more[open] summary::after{transform:rotate(180deg)}
+.focus-more .focus-place-grid{margin-top:12px}
+.focus-empty{padding:26px;text-align:center;border-radius:16px;background:#f6ebdc;color:#8d7867;font-size:11px}
+
+.focus-switch-note{margin-top:18px;color:#9a8878;font-size:9px;text-align:right}
+
+@media(max-width:980px){
+  .focus-header{align-items:flex-start;flex-direction:column}.focus-meta{justify-content:flex-start}
+  .focus-subarea{grid-template-columns:1fr}.focus-subarea-places{justify-content:flex-start}
+}
+@media(max-width:720px){
+  .destination-focus{padding:24px 18px 28px}
+  .focus-heading-row h2{font-size:29px}
+  .focus-place-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:460px){.focus-place-grid{grid-template-columns:1fr}}
+
+@media(prefers-reduced-motion:reduce){.destination-switch,.destination-switch::after,.sketch-pin,.focus-more summary::after{transition:none!important}}
