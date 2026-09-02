@@ -9,11 +9,12 @@
     showToast.timer = setTimeout(() => toast.classList.remove('show'), 2200);
   }
 
-  function bindCard(card, action) {
+  function bindCard(card, action, options={}) {
     if (!card || card.dataset.cardBound === 'true') return;
+    const { captureControls=false } = options;
     card.dataset.cardBound = 'true';
     card.dataset.cardInteractive = 'true';
-    card.setAttribute('role', card.tagName === 'A' ? 'link' : 'link');
+    card.setAttribute('role','link');
     if (card.tagName !== 'A') card.tabIndex = 0;
 
     let pressTimer;
@@ -28,13 +29,19 @@
     });
 
     card.addEventListener('click', event => {
-      if (event.target.closest('a,button') && event.target.closest('a,button') !== card) return;
+      const nestedControl = event.target.closest('a,button');
+      if (nestedControl && nestedControl !== card && !captureControls) return;
+      if (captureControls) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
       action();
     });
 
     card.addEventListener('keydown', event => {
       if (event.key !== 'Enter' && event.key !== ' ') return;
       event.preventDefault();
+      event.stopPropagation();
       action();
     });
   }
@@ -49,7 +56,7 @@
         } else {
           showToast('这个区域会按同一套模板继续接入；目前先完成罗马及意大利中部。');
         }
-      });
+      }, {captureControls:true});
     });
 
     const destinationLinks = { '罗马':'D001' };
