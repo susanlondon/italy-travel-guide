@@ -1,0 +1,88 @@
+/* Web V0.11.2 — Area 子页面统一放大字号 / 可读性增强 */
+
+/* 顶部与辅助导航 */
+.subpage-shell .soft-link{font-size:14px;padding:9px 12px}
+.subpage-shell .breadcrumb{font-size:14px;gap:9px;margin-bottom:18px}
+.subpage-shell .subpage-eyebrow{font-size:12px;letter-spacing:.14em}
+
+/* Area Hero */
+.subpage-shell .original-name{font-size:17px;margin-top:4px;margin-bottom:16px}
+.subpage-shell .lead-copy{font-size:17px;line-height:1.8}
+.subpage-shell .stat-chip{font-size:13px;padding:8px 12px}
+.subpage-shell .stat-chip b{font-size:19px}
+.subpage-shell .sketch-label{font-size:16px}
+.subpage-shell .sketch-pin b{font-size:18px}
+.subpage-shell .sketch-pin small{font-size:12px;margin-top:-2px}
+.subpage-shell .sketch-note{font-size:11px;line-height:1.55;max-width:300px}
+
+/* Destination 选择区 */
+.subpage-shell .subpage-section-heading h2{font-size:34px}
+.subpage-shell .subpage-section-heading p:not(.subpage-eyebrow){font-size:14px;line-height:1.65}
+.subpage-shell .destination-card .art-label{font-size:12px;padding:6px 10px}
+.subpage-shell .destination-card h3{font-size:28px}
+.subpage-shell .destination-card .dest-original{font-size:14px;margin-bottom:11px}
+.subpage-shell .dest-metrics{gap:7px;margin-bottom:12px}
+.subpage-shell .dest-metrics span{font-size:12px;padding:5px 9px}
+.subpage-shell .destination-card p{font-size:14px;line-height:1.65}
+.subpage-shell .dest-child-note{font-size:12px!important;line-height:1.55!important;padding:9px 11px}
+.subpage-shell .destination-card-cta{font-size:13px;padding-top:16px}
+
+/* 当前目的地标题与概览 */
+.subpage-shell .focus-heading-row{gap:14px}
+.subpage-shell .focus-heading-row h2{font-size:39px}
+.subpage-shell .focus-heading-row em{font-size:16px}
+.subpage-shell .focus-intro{font-size:14px;line-height:1.75;max-width:820px}
+.subpage-shell .focus-meta{gap:8px}
+.subpage-shell .focus-meta span{font-size:12px;padding:7px 10px}
+
+/* 目的地提示信息栏 */
+.subpage-shell .focus-hints{margin-top:20px}
+.subpage-shell .focus-hint{grid-template-columns:42px minmax(0,1fr);gap:12px;padding:16px 18px}
+.subpage-shell .focus-hint-icon{width:38px;height:38px;border-radius:13px;font-size:19px}
+.subpage-shell .focus-hint-copy strong{font-size:17px;margin:0 0 5px;line-height:1.35}
+.subpage-shell .focus-hint-copy p{font-size:12.5px;line-height:1.65}
+.subpage-shell .focus-hint-copy .hint-chips{gap:5px;margin-top:7px}
+.subpage-shell .focus-hint-copy .hint-chips span{font-size:10.5px;padding:4px 7px}
+
+/* 景点内容区 */
+.subpage-shell .focus-block{padding-top:24px}
+.subpage-shell .focus-block-heading h3{font-size:25px}
+.subpage-shell .focus-block-heading p{font-size:12px;line-height:1.55;margin-top:4px}
+.subpage-shell .focus-place-body{padding:13px 14px 14px}
+.subpage-shell .focus-place-body h4{font-size:18px;line-height:1.4}
+.subpage-shell .focus-place-body .original{font-size:11.5px;margin:2px 0 8px}
+.subpage-shell .focus-place-tags{gap:5px}
+.subpage-shell .focus-place-tags span{font-size:10.5px;padding:4px 7px}
+
+/* 梵蒂冈轻量子区域 */
+.subpage-shell .focus-subarea-copy small{font-size:11px}
+.subpage-shell .focus-subarea-copy strong{font-size:23px;margin:3px 0 6px}
+.subpage-shell .focus-subarea-copy p{font-size:12.5px;line-height:1.65}
+.subpage-shell .focus-subarea-place{font-size:11.5px;padding:9px 11px}
+.subpage-shell .focus-subarea-place b{font-size:15px;line-height:1.35}
+
+/* 展开更多与页尾提示 */
+.subpage-shell .focus-more summary{font-size:13px}
+.subpage-shell .focus-switch-note{font-size:11px;line-height:1.5}
+.subpage-shell .subpage-footer{font-size:13px}
+
+@media(max-width:1040px){
+  .subpage-shell .focus-hint{padding:15px 16px}
+}
+
+@media(max-width:720px){
+  .subpage-shell .subpage-section-heading h2{font-size:31px}
+  .subpage-shell .focus-heading-row h2{font-size:34px}
+  .subpage-shell .lead-copy{font-size:16px}
+  .subpage-shell .destination-card h3{font-size:26px}
+  .subpage-shell .destination-card p{font-size:13px}
+  .subpage-shell .focus-hint-copy strong{font-size:16px}
+  .subpage-shell .focus-hint-copy p{font-size:12px}
+}
+
+@media(max-width:520px){
+  .subpage-shell .breadcrumb{font-size:13px}
+  .subpage-shell .subpage-eyebrow{font-size:11px}
+  .subpage-shell .sketch-note{font-size:10.5px}
+  .subpage-shell .focus-place-body h4{font-size:17px}
+}
