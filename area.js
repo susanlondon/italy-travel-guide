@@ -28,6 +28,28 @@
     D003:'悬崖上的古老小镇，适合从罗马出发安排半日到一日。',
     D004:'山城与艺术建筑兼具，适合半日到一日的轻量探索。'
   };
+
+  const travelTips = {
+    D001:[
+      {icon:'⌁',title:'这一站怎么去',text:'罗马是中部主要枢纽，市内经典区域适合步行结合公共交通。',chips:['步行','公共交通']},
+      {icon:'▣',title:'建议待多久',text:'表格中的推荐停留时间为 3–4 天，可以把经典古迹与城市漫步拆开安排。',chips:['3–4 天']},
+      {icon:'⌘',title:'顺路可以搭配谁',text:'梵蒂冈可以直接放进罗马行程；白露里治奥与奥尔维耶托可作为中部延伸目的地。',chips:['梵蒂冈','中部延伸']},
+      {icon:'◌',title:'这一站小提醒',text:'热门景点较集中，优先固定必须预约的项目，其余时间留给城市漫步会更轻松。',chips:['预约优先','留出漫步时间']}
+    ],
+    D003:[
+      {icon:'⌁',title:'这一站怎么去',text:'更适合作为罗马出发的短途目的地，抵达之后主要以步行完成游览。',chips:['罗马出发','步行']},
+      {icon:'▣',title:'建议待多久',text:'表格中的推荐停留时间约为 0.5 天；如果想慢慢走，可以放宽到一整天。',chips:['0.5–1 天']},
+      {icon:'⌘',title:'顺路可以搭配谁',text:'把它当作罗马行程中的独立半日或一日延伸最清楚，不需要和其他城市景点混在同一屏。',chips:['短途延伸']},
+      {icon:'◌',title:'这一站小提醒',text:'小镇核心范围不大，重点是老城本身与沿途景观，不需要堆很多景点。',chips:['轻量浏览','老城步行']}
+    ],
+    D004:[
+      {icon:'⌁',title:'这一站怎么去',text:'适合从罗马向北延伸，进入老城后以步行为主，整体节奏比罗马轻松很多。',chips:['罗马延伸','老城步行']},
+      {icon:'▣',title:'建议待多久',text:'表格中的推荐停留时间约为 0.5 天；若加入地下空间与老城漫步，可留到一整天。',chips:['0.5–1 天']},
+      {icon:'⌘',title:'顺路可以搭配谁',text:'适合作为罗马之后的中部小镇补充，也可以单独安排为轻量的一日目的地。',chips:['中部小镇','一日延伸']},
+      {icon:'◌',title:'这一站小提醒',text:'核心看点不算多，优先抓住主教座堂、地下空间和老城步行即可。',chips:['重点少而精','慢逛老城']}
+    ]
+  };
+
   const featuredRomeIds = ['P0009','P0005','P0007','P0004','P0003','P0011'];
   const icons = {
     museum_gallery:'◫', church_religious:'✦', castle_palace:'♜', square:'◇', landmark:'⌖', fountain:'≈',
@@ -36,6 +58,7 @@
 
   const destinationGrid = document.querySelector('#destination-grid');
   const focusHeader = document.querySelector('#focus-header');
+  const focusHints = document.querySelector('#focus-hints');
   const focusContent = document.querySelector('#focus-content');
   const focusSection = document.querySelector('#destination-focus');
 
@@ -77,6 +100,20 @@
     `;
   }
 
+  function renderTips(destinationId) {
+    const tips = travelTips[destinationId] || [];
+    focusHints.innerHTML = tips.map(tip => `
+      <div class="focus-hint">
+        <span class="focus-hint-icon" aria-hidden="true">${tip.icon}</span>
+        <div class="focus-hint-copy">
+          <strong>${tip.title}</strong>
+          <p>${tip.text}</p>
+          ${tip.chips?.length ? `<div class="hint-chips">${tip.chips.map(chip => `<span>${chip}</span>`).join('')}</div>` : ''}
+        </div>
+      </div>
+    `).join('');
+  }
+
   function renderFocus(destinationId) {
     const dest = destinationById[destinationId];
     if (!dest) return;
@@ -103,6 +140,8 @@
         <span><b>${totalForDisplay}</b> 条相关内容</span>
       </div>
     `;
+
+    renderTips(destinationId);
 
     let html = `
       <div class="focus-block">
