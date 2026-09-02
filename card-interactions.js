@@ -59,16 +59,16 @@
       }, {captureControls:true});
     });
 
-    const destinationLinks = { '罗马':'D001' };
+    const destinationLinks = { '罗马':'area.html?id=A01&view=D001#destination-focus' };
     document.querySelectorAll('.recommend-card').forEach(card => {
       const name = card.querySelector('h3')?.textContent?.trim();
       if (!name) return;
       bindCard(card, () => {
-        const id = destinationLinks[name];
-        if (id) {
-          location.href = `destination.html?id=${id}`;
+        const href = destinationLinks[name];
+        if (href) {
+          location.href = href;
         } else {
-          showToast(`${name} 的目的地页面会在对应大区域完成后接入。`);
+          showToast(`${name} 的内容会在对应大区域页面内接入。`);
         }
       });
     });
