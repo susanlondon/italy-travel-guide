@@ -1,0 +1,115 @@
+/* Web V0.10.1 — 全站卡片点击反馈 */
+
+[data-card-interactive],
+.child-card,
+.sketch-pin,
+.notebook-card,
+.practical-grid button{
+  -webkit-tap-highlight-color:transparent;
+}
+
+[data-card-interactive]{
+  cursor:pointer;
+  outline:none;
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease,background-color .18s ease;
+}
+
+[data-card-interactive]:hover{
+  transform:translateY(-4px);
+  box-shadow:0 15px 30px rgba(91,66,43,.11);
+  border-color:rgba(169,95,66,.28);
+}
+
+[data-card-interactive]:active,
+[data-card-interactive].is-pressing{
+  transform:translateY(1px) scale(.986);
+  box-shadow:0 5px 12px rgba(91,66,43,.08);
+  transition-duration:.08s;
+}
+
+[data-card-interactive]:focus-visible,
+.child-card:focus-visible,
+.sketch-pin:focus-visible,
+.notebook-card:focus-visible,
+.practical-grid button:focus-visible{
+  outline:3px solid rgba(177,103,70,.28);
+  outline-offset:4px;
+}
+
+/* 首页图片区：整卡 hover 时给一层很轻的推近感 */
+.area-card .area-art,
+.recommend-card .reco-art{
+  transition:transform .28s ease;
+  transform-origin:center;
+}
+
+.area-card[data-card-interactive]:hover .area-art,
+.recommend-card[data-card-interactive]:hover .reco-art{
+  transform:scale(1.025);
+}
+
+/* Area 页面目的地卡 */
+.destination-card[data-card-interactive] .destination-card-art{
+  transition:transform .28s ease,filter .28s ease;
+  transform-origin:center;
+}
+
+.destination-card[data-card-interactive]:hover .destination-card-art{
+  transform:scale(1.015);
+  filter:saturate(1.03);
+}
+
+.destination-card[data-card-interactive] .destination-card-cta{
+  margin-top:auto;
+  padding-top:15px;
+  color:#a15d40;
+  font-weight:700;
+  font-size:12px;
+}
+
+/* 已经是整卡链接的子区域 / 地图点，也统一按压感 */
+.child-card,
+.sketch-pin{
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+
+.child-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 20px rgba(91,66,43,.075);
+}
+
+.child-card:active,
+.sketch-pin:active{
+  transform:translateY(1px) scale(.985);
+}
+
+/* 首页攻略本和实用入口同样有明确按下反馈 */
+.notebook-card,
+.practical-grid button{
+  transition:transform .17s ease,box-shadow .17s ease,border-color .17s ease;
+}
+
+.notebook-card:hover,
+.practical-grid button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 9px 18px rgba(91,66,43,.075);
+}
+
+.notebook-card:active,
+.practical-grid button:active{
+  transform:translateY(1px) scale(.988);
+  box-shadow:0 4px 10px rgba(91,66,43,.06);
+}
+
+@media (prefers-reduced-motion:reduce){
+  [data-card-interactive],
+  .child-card,
+  .sketch-pin,
+  .notebook-card,
+  .practical-grid button,
+  .area-card .area-art,
+  .recommend-card .reco-art,
+  .destination-card .destination-card-art{
+    transition:none!important;
+  }
+}
