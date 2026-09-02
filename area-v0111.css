@@ -1,0 +1,86 @@
+/* Web V0.11.1 — 当前目的地提示信息栏 */
+
+.focus-hints{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  margin:18px 0 2px;
+  border:1px solid rgba(151,118,84,.16);
+  border-radius:19px;
+  background:linear-gradient(180deg,rgba(250,244,234,.84),rgba(246,237,224,.72));
+  box-shadow:0 6px 16px rgba(91,66,43,.035);
+  overflow:hidden;
+}
+.focus-hint{
+  position:relative;
+  min-width:0;
+  display:grid;
+  grid-template-columns:38px minmax(0,1fr);
+  gap:10px;
+  align-items:start;
+  padding:14px 16px;
+}
+.focus-hint:not(:last-child)::after{
+  content:"";
+  position:absolute;
+  top:13px;
+  right:0;
+  bottom:13px;
+  width:1px;
+  background:rgba(151,118,84,.14);
+}
+.focus-hint-icon{
+  display:grid;
+  place-items:center;
+  width:34px;
+  height:34px;
+  border-radius:12px;
+  background:rgba(255,250,242,.86);
+  border:1px solid rgba(151,118,84,.14);
+  color:#9d654b;
+  font-size:17px;
+  box-shadow:0 3px 9px rgba(91,66,43,.035);
+}
+.focus-hint-copy strong{
+  display:block;
+  margin:1px 0 3px;
+  color:#564539;
+  font:700 14px "STKaiti","KaiTi",serif;
+}
+.focus-hint-copy p{
+  margin:0;
+  color:#837162;
+  font-size:9px;
+  line-height:1.55;
+}
+.focus-hint-copy .hint-chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:4px;
+  margin-top:6px;
+}
+.focus-hint-copy .hint-chips span{
+  padding:3px 6px;
+  border-radius:999px;
+  background:rgba(255,250,242,.72);
+  border:1px solid rgba(151,118,84,.12);
+  color:#876e59;
+  font-size:8px;
+}
+
+/* 提示栏与景点区之间留出清楚但克制的层级。 */
+.focus-hints + .focus-content-wrap,
+.focus-hints + #focus-content{
+  margin-top:4px;
+}
+
+@media(max-width:1040px){
+  .focus-hints{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .focus-hint:nth-child(2)::after{display:none}
+  .focus-hint:nth-child(-n+2){border-bottom:1px solid rgba(151,118,84,.12)}
+}
+@media(max-width:640px){
+  .focus-hints{grid-template-columns:1fr}
+  .focus-hint{padding:13px 14px}
+  .focus-hint:not(:last-child)::after{display:none}
+  .focus-hint:not(:last-child){border-bottom:1px solid rgba(151,118,84,.12)}
+}
