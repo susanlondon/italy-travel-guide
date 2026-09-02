@@ -5,6 +5,20 @@
 
 ## 当前版本
 
+### Web V0.10.1 — Card Interaction Pass
+
+- 首页「按大区域浏览」改为整张卡片都可点击，不再只能点击底部小字。
+- 当前已完成的「罗马及意大利中部」会直接进入 Area 页面；其余区域在页面完成前保留统一的交互反馈。
+- 首页「可能适合你的地点」也采用整卡交互；已完成的罗马可直接进入 Destination 页面。
+- Area 页面中的罗马、白露里治奥、奥尔维耶托 Destination 卡片改为整卡可点击。
+- 统一加入轻量 hover / press / focus 反馈：
+  - Hover 时轻微上浮、阴影增强。
+  - 图片轻微推近。
+  - 按下时轻微下压与缩放，增加真实点击感。
+  - 键盘 Focus 时提供清晰焦点边框。
+- 「我的攻略本」「实用攻略入口」等卡片按钮同步加入按压反馈。
+- 新增共享的 `card-interactions.css` 与 `card-interactions.js`，后续 Area / Destination / Place 入口沿用同一套交互规则。
+
 ### Web V0.10 — Area / Destination Page Prototype
 
 - 正式开始子页面阶段，先完成「罗马及意大利中部」Area 页面。
